@@ -13,7 +13,6 @@ public class AuthUser {
 
     private final Long userId;
     private final String email;
-    private final UserRole userRole;
     private final String nickname;
     private final Collection<? extends GrantedAuthority> authorities;
 
@@ -21,7 +20,6 @@ public class AuthUser {
         this.userId = userId;
         this.email = email;
         this.nickname = nickname;
-        this.userRole = role;
         this.authorities = List.of(new SimpleGrantedAuthority(role.name()));
     }
 }
