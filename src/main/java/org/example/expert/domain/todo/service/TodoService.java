@@ -17,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Service
@@ -87,9 +88,13 @@ public class TodoService {
     public Page<TodoProjectionsDto> getTodosByQueryDSL(int page,
                                                  int size,
                                                  String title,
-                                                 LocalDateTime startDate,
-                                                 LocalDateTime endDate,
+                                                 LocalDate startTime,
+                                                 LocalDate endTime,
                                                  String nickname) {
+
+        LocalDateTime startDate = startTime == null ? null : startTime.atStartOfDay();
+        LocalDateTime endDate = endTime == null ? null : endTime.atTime(23, 59, 59);
+
         Pageable pageable = PageRequest.of(page - 1, size);
 
         Page<TodoProjectionsDto> todos = todoRepository

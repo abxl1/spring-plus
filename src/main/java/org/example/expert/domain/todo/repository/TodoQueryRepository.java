@@ -10,5 +10,5 @@ import java.time.LocalDateTime;
 public interface TodoQueryRepository {
     Todo findByIdByDsl(long todoId);
 
-    Page<TodoProjectionsDto> findByTitleAndCreatedAtAndNickname(String title, LocalDateTime startDate, LocalDateTime endDate, String nickname, Pageable pageable);
+    Page<TodoProjectionsDto> findByTitleAndCreatedAtAndNickname(String title, LocalDateTime startTime, LocalDateTime endTime, String nickname, Pageable pageable);
 }
