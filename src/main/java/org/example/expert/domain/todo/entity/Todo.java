@@ -19,6 +19,7 @@ public class Todo extends Timestamped {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String nickname;
     private String title;
     private String contents;
     private String weather;
@@ -33,7 +34,8 @@ public class Todo extends Timestamped {
     @OneToMany(mappedBy = "todo", cascade = CascadeType.PERSIST)
     private List<Manager> managers = new ArrayList<>();
 
-    public Todo(String title, String contents, String weather, User user) {
+    public Todo(String nickname, String title, String contents, String weather, User user) {
+        this.nickname = nickname;
         this.title = title;
         this.contents = contents;
         this.weather = weather;
